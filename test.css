@@ -1,0 +1,51 @@
+@page {
+  
+  /* size: A4 landscape; */
+  size: A4;
+  margin: 11mm 12.5mm 12mm 12.5mm;
+  @bottom {
+    content: counter(page)
+}
+  
+}
+
+@media print {
+  div {
+    color: black;
+  }
+  p {
+    text-align: justify;
+    text-indent: 5em;
+  }
+  .fn {
+    float: footnote;
+  }
+}
+
+
+
+/* DEFINE DIFFERENT MARGIN SIZES OF PAGES */
+@page:left {
+  margin-left: 3cm;
+}
+
+@page:right {
+  margin-left: 4cm;
+  border-top: .25pt solid #666;
+  content: "My Book";
+  font-size: 9pt;
+  color: #333;
+}
+
+@page:first {
+   /* add css for first page only */
+  background-color: red;
+  
+}
+
+/* targets any page this intentionally left blank */
+@page:blank {
+  @top-center {
+    content: "This page is intentionally left blank."
+  }
+}

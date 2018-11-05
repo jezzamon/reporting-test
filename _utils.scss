@@ -1,0 +1,438 @@
+//
+// MIXINS 
+//
+@mixin transition($target, $time) {
+  transition: $target $time ease-in-out; // example : @include transition(background, 5s)
+}
+
+
+//
+// PADDING AND MARGINS
+//
+.small-padding-tb {
+  padding: 5px 0;
+}
+
+.padding-tb {
+  padding: 15px 0;
+}
+
+.no-padding{
+  padding: 0;
+}
+
+// layout helpers to help overwrite bootstrap padding
+
+.m0 {
+  margin: 0;
+}
+
+.mlr0 {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.mt0 {
+  margin-top: 0 !important;
+}
+
+.ml0 {
+  margin-left: 0 !important;
+}
+
+.mr0 {
+  margin-right: 0 !important;
+}
+
+.mt0 {
+  margin-top: 0 !important;
+}
+
+.p0 {
+  padding: 0;
+}
+
+.plr0 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.pr0 {
+  padding-right: 0 !important;
+}
+
+.pl0 {
+  padding-left: 0 !important;
+}
+
+.pb15 {
+  padding-bottom: 15px!important;
+}
+
+
+.gap-small {
+  height: 5px;
+}
+
+.gap {
+  height: 15px;
+}
+
+.gap-large {
+  height: 25px;
+}
+
+.dark {
+  background-color: #ddd;
+}
+
+select[disabled] {
+  background-color: #eee;
+  opacity: 1; // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655
+}
+
+.strippedDiv > div:nth-of-type(odd) {
+  background-color: #d7d7d7;
+}
+
+.plus-left:before {
+  text-align: left !important;
+}
+
+.center {
+  text-align: center;
+}
+
+.center img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.nav {
+  .border {
+      border: solid 1px #ddd !important;
+      top: 1px;
+  }
+
+  .active {
+      .border {
+          border-bottom: none !important;
+          top: 2px;
+      }
+  }
+}
+
+.tab-content {
+  &.border {
+      border: solid 1px #ddd !important;
+  }
+}
+
+.pad-right {
+  padding-right: 25px;
+}
+
+.noBreak {
+  white-space: nowrap;
+}
+
+.split-end {
+  .row {
+      border-right: 1px dashed #333;
+  }
+}
+
+
+.floorplanImage {
+  width: 640px;
+  height: 78px;
+  margin: auto;
+}
+
+.fbo-img-container {
+  text-align: center; /* Align center inline elements */
+  font: 0/0 a; /* Hide the characters like spaces */
+  height: 100%;
+
+  &:before {
+      content: ' ';
+      display: inline-block;
+      vertical-align: middle;
+      height: 100%;
+  }
+
+  img {
+      vertical-align: middle;
+      display: inline-block;
+      max-height: 68px;
+
+      &.inactive {
+          opacity: 0.2;
+      }
+  }
+}
+
+// HOVER - BOB
+/* Bob */
+@-webkit-keyframes hvr-bob {
+  0% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+
+  50% {
+    -webkit-transform: translateY(-4px);
+    transform: translateY(-4px);
+  }
+
+  100% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes hvr-bob {
+  0% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+
+  50% {
+    -webkit-transform: translateY(-4px);
+    transform: translateY(-4px);
+  }
+
+  100% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+}
+
+@-webkit-keyframes hvr-bob-float {
+  100% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes hvr-bob-float {
+  100% {
+    -webkit-transform: translateY(-8px);
+    transform: translateY(-8px);
+  }
+}
+
+.hvr-bob {
+  // display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+}
+.hvr-bob:hover, .hvr-bob:focus, .hvr-bob:active {
+  -webkit-animation-name: hvr-bob-float, hvr-bob;
+  animation-name: hvr-bob-float, hvr-bob;
+  -webkit-animation-duration: .3s, 1.5s;
+  animation-duration: .3s, 1.5s;
+  -webkit-animation-delay: 0s, .3s;
+  animation-delay: 0s, .3s;
+  -webkit-animation-timing-function: ease-out, ease-in-out;
+  animation-timing-function: ease-out, ease-in-out;
+  -webkit-animation-iteration-count: 1, infinite;
+  animation-iteration-count: 1, infinite;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-direction: normal, alternate;
+  animation-direction: normal, alternate;
+}
+
+/* SHADOW */
+.hvr-shadow {
+  display: inline-block;
+  vertical-align: middle;
+  @include transition(box-shadow, 5s);
+  // transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  // backface-visibility: hidden;
+}
+.hvr-shadow:hover, .hvr-shadow:focus, .hvr-shadow:active {
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+}
+
+// REPORTS TEMPLATES TEST
+$text-width: 180px;
+$num-width: 80px;
+
+// Main container: initialize the flex, direction is row
+.table-row {
+display: flex;
+flex-direction: row;
+flex-grow: 0;
+width: 100%;
+padding-left: 15px;
+padding-right: 15px;
+}
+
+// Wrappers around cells and other wrappers: flex, row, wrap
+.flex-wrapper {
+display: flex;
+flex-direction: row;
+flex-grow: 0;
+&.flex-wrap {
+  flex-wrap: wrap;
+}
+}
+
+// Text based cells and wrappers: grow equally when there is extra space.
+.flex-grow {
+flex-grow: 1;
+}
+
+// Text based cells: truncate and show ellipsis when there is not enough space
+.text-cell {
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+padding-right: 20px;
+}
+
+// Fix the minimum width of the leaf level cells
+.flex-table-text {
+width: $text-width;
+}
+
+.flex-table-num {
+width: $num-width;
+}
+
+/*
+* General good-look styles, not mandatory.
+*/
+
+
+.table-row {
+border-bottom: 2px solid #e0e0e0;
+border-collapse: collapse;
+padding-top: 5px;
+}
+
+.table-row.header {
+background-color: #e0e0e0;
+font-weight: bold;
+padding-top: 8px;
+padding-bottom: 8px;
+}
+
+// html .select2-drop .select2-results li.select2-highlighted {
+//     background-color: transparent !important;
+//     color: black!important;
+// }
+
+// .ui-select-choices-row.highlighted.select2-highlighted {
+//     background-color: red;
+// }
+// .ui-select-choices-row:hover {
+//     background-color: #003E51;
+//     color: #fff;
+// }
+
+.check-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+// extend checkbox color boxes colors
+.cbr-replaced.cbr-mute .cbr-state, 
+.cbr-replaced.cbr-lock .cbr-state, {
+  background: #bdd7ef;
+  background-color: #bdd7ef;
+}
+
+$report-label-size: 9px;
+$report-section-offset: 41px;
+.report-sections-form {
+  // overwrite padding
+  [class*="col-"]  {
+      padding-left: 7.5px!important;
+      padding-right: 7.5px!important;
+  }
+
+  
+  label {
+      text-transform: uppercase!important;
+      // font-size: 90%!important;
+      // font-size: 90%
+      font-size: $report-label-size!important;;
+  }
+
+  &--offset {
+      margin-right: $report-section-offset;
+  }
+
+  // overwrite form-control height
+  .form-control {
+      height:26px!important;
+      font-size: $report-label-size;
+      text-transform: uppercase;
+  
+      &.mock-textarea-disabled {
+          background-color: #eeeeee;
+          height: auto!important;
+          text-transform: none!important;
+          &:hover {
+              cursor: not-allowed;
+              
+          }
+
+      }
+      &.session-summary-custom-input {
+          height: 34px!important;
+          border-radius: 0!important;
+      }
+  }
+
+  .report-section-cb-options-container {
+      position: relative;
+  
+      i {
+          position: absolute;
+          left: -16px;
+          bottom: 6px;
+      }
+  }
+
+  .in-footer-cb-padding {
+      margin-right: 20px;
+  }
+
+
+
+  
+}
+
+.pointer:hover {
+  cursor: pointer;
+}
+
+.grab:hover {
+  cursor: grab;
+}
+
+//overwrite sweet alert
+.sweet-alert {
+  border: 1px solid #ddd!important;
+  box-shadow: 2px 6px 14px 0px rgba(232,233,240,1)!important;
+  .cancel {
+      background-color: #ddd!important;
+  }
+}
+
+

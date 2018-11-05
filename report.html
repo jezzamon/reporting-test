@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+  </head>
+  <body>
+
+<!-- Set up headers and footers -->
+<!-- <pre>{{$ctrl.paramaters | json}}</pre> -->
+<!-- <pre>{{$ctrl.data.selectedSession | json}}</pre> -->
+<!-- <div class="report-cover-page-img">
+    <h2 class="title">Title Page</h2>
+    <h3 class="sub-title">Document Effectivity</h3>
+</div> -->
+  
+<div class="container" style="background-color:#fff;">
+  
+  <!-- <div class="divHeader flex-grid space-between"> -->
+  
+
+  <!-- TITLE PAGE PDF PREVIEW -->
+  
+  <!-- <div class="divHeader flex-grid space-between">
+  <div>Global 7000 (hard coded)</div>
+  <div>
+    <div>MEETING MINUTES</div>
+    <div>CONFIDENTIAL</div>
+  </div>
+</div>
+
+<div class="h6 divFooter flex-grid space-between">
+  <div>
+    <div>{{$ctrl.milestoneName.inPdf ? $ctrl.milestoneName.value + ' - ' : null }} 
+      {{$ctrl.sessionId.inPdf ? $ctrl.sessionId.value + ' - ': null}} 
+      {{$ctrl.reportNumber.inPdf ?  $ctrl.reportNumber.value + ' - ': null }}
+      {{$ctrl.revisionDate.inPdf ?  $ctrl.revisionDate.value + ' - ': null }}
+      {{$ctrl.revisionBy.inPdf ?  $ctrl.revisionBy.value + ' - ': null }}
+      {{$ctrl.preparedBy.inPdf ?  $ctrl.preparedBy.value + ' - ': null }}
+      {{$ctrl.buyerSellerInitials.inPdf ?  $ctrl.buyerSellerInitials.value : null }}
+      
+      </div>
+    <div>{{$ctrl.footerText.inPdf ?  $ctrl.footerText.value : null }}.</div>
+  </div>
+  <div><img src="/App/Main/images/logo-bombardier-black.png"></div>
+</div> -->
+
+<div class="report-cover-page-container  ">
+    <div class="report-cover-page  test-img flex-grid">
+        <div class="report-title-group">
+          <h2 class="title">Title Page</h2>
+          <h3 class="sub-title">Document Effectivity</h3>
+        </div>
+        
+      </div>
+</div>
+
+
+</div> 
+<!-- END CONTAINER TITLE PAGE -->
+<div class="page-break"></div>
+<div class="page-break"></div>
+<div class="header-text">Model Name</div>
+<div class="footer-text">Validation 1 - 1301 - 13 - Revisision - 11/05/2018 - Prepared by : Test1</div>
+
+<!-- TABLE OF CONTENTS -->
+<div ng-if="$ctrl.includetableOfContents.inPdf" class="" style="background-color:#fff;">
+  <h3 class="hide-in-print light">TABLE OF CONTENTS preview</h3>
+  <div class="table-of-contents-container page-break-after">
+    <div ng-repeat="section in $ctrl.data.sessionReportData.sections">
+      <h3>
+        Table of Contents
+        
+        <!-- {{$ctrl.data.localize('ReportSection.' + $ctrl.data.localize($ctrl.data.reportEnums.ReportSectionId[section.sectionSpecReportSectionId]) )}} -->
+      </h3>
+      <h3 class="xref" href="#ch-release-approval">Release Approval</h3>
+      <h3 class="xref" href="#ch-section-3">Project Session Summary</h3>
+      <h3 class="xref" href="#section-detail-summary">Detail Summary</h3>
+      <h3 class="xref" href="#section-material-summary">Material Summary</h3>
+      <h3 class="xref" href="#section-po-summary">P & O</h3>
+      <h3 class="xref" href="#section-additional-notes">Additional Notes</h3>
+      <h3 class="xref" href="#section-signature-approval">Signature Approval 
+        <span class="fn">Appears in Landscape mode.</span>
+      </h3>
+      
+
+    </div>
+  </div>
+  
+</div>
+
+<div class="page-break"></div>
+
+
+<!-- RELEASE APPROVAL CONTENTS -->
+<div ng-if="$ctrl.includeReleaseApproval.inPdf" class="container new-page-padding" style="background-color:#fff;">
+  <h3 id="ch-release-approval" class="report-header uppercase">Release Approval</h3>
+  <div class="summary-sections-row flex-grid 
+                    flex-wrap flex-wrap-3-per-row pl-2">
+
+          <div ng-repeat="approver in $ctrl.releaseApprovalList" class="summary-sections-elements">
+
+            <div class="summary-value summary-value-sm gutter">
+              <!-- {{approver.name}} -->Joseph
+            </div>
+            <div class="summary-label gutter">
+              <!-- {{approver.title}} -->Clark
+            </div>
+
+          </div>
+
+          <div ng-repeat="approver in $ctrl.releaseApprovalList" class="summary-sections-elements">
+
+            <div class="summary-value summary-value-sm gutter">
+              <!-- {{approver.name}} -->Jody
+            </div>
+            <div class="summary-label gutter">
+              <!-- {{approver.title}} -->Everett
+            </div>
+
+          </div>
+
+          <div ng-repeat="approver in $ctrl.releaseApprovalList" class="summary-sections-elements">
+
+            <div class="summary-value summary-value-sm gutter">
+              <!-- {{approver.name}} -->George
+            </div>
+            <div class="summary-label gutter">
+              <!-- {{approver.title}} -->Millman
+            </div>
+
+          </div>
+
+
+  </div>
+  
+</div>
+<div class="page-break"></div>
+<!-- body content -->
+
+<div class="report-body container" style="background-color:#fff;">
+  <div style="margin-top: 40px;" alt="padding area"></div>
+
+  <!-- PROJECT SUMMARY -- HIDDEN FOR NOW UNTIL IMPLEMENTED--> 
+  <div ng-hide="true" class="project-summary new-page-padding">
+    <header id="ch-section-3" class="report-header">Project Summary</header>
+
+    <!-- PROJECT SUMMARY -> PROJECT INFO GRID -->
+    <div class="summary">
+
+      <div class="summary-sections-row flex-grid">
+        <div class="col flex-grow-2 summary-sections-elements gutter">
+
+          <div class="summary-value ">
+            Behavior Interactive
+          </div>
+          <div class="summary-label">
+            Customer
+          </div>
+
+        </div>
+
+        <div class="col summary-sections-elements gutter">
+
+          <div class="summary-value">
+            213213213
+          </div>
+          <div class="summary-label">
+            Project
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="summary-sections-row flex-grid">
+
+        <div class="col summary-sections-elements gutter">
+          <div class="summary-value">
+            213213213
+          </div>
+          <div class="summary-label">
+            Purchase Agreement
+          </div>
+        </div>
+
+        <div class="col summary-sections-elements gutter">
+          <div class="summary-value">
+            Canada
+          </div>
+          <div class="summary-label">
+            Country of Operation
+          </div>
+        </div>
+
+        <div class="col summary-sections-elements gutter">
+          <div class="summary-value">
+            USA
+          </div>
+          <div class="summary-label">
+            Country of Registration
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <!-- PROJECT SUMMARY -> BOMBARDIER PROJECT TEAM -->
+    <header class="report-subheader">Bombardier Project Team</header>
+
+    <div class="report-table attendees-table">
+      <div class="flex-grid">
+        <div class="col">Valerie Schimeck</div>
+        <div class="col">Customer Account</div>
+      </div>
+
+      <div class="flex-grid">
+        <div class="col">David Bison</div>
+        <div class="col">Customer Account Manager</div>
+      </div>
+
+      <div class="flex-grid">
+        <div class="col">David Bison</div>
+        <div class="col">Customer Account Engineer</div>
+      </div>
+
+      <div class="flex-grid">
+        <div class="col">David Bison</div>
+        <div class="col">Customer Account Manager</div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <!-- SESSION SUMMARY -->
+  <div class="session-summary">
+    <header class="report-header">Session summary</header>
+
+    <!-- SESSION SUMMARY -> SESSION SUMMARY GRID -->
+    <div class="summary">
+
+      <div class="summary-sections-row flex-grid">
+        <div class="col summary-sections-elements">
+          <!-- MILESTONE -->
+          <div class="summary-value gutter">
+            {{$ctrl.milestoneName.inPdf ? $ctrl.milestoneName.value + ' - ' : null }}
+            
+          </div>
+          <div class="summary-label gutter">
+            Milestone
+          </div>
+
+        </div>
+
+        <div class="col summary-sections-elements">
+
+          <div class="summary-value gutter">
+            {{$ctrl.sessionId.value}}
+          </div>
+          <div class="summary-label gutter">
+            Session
+          </div>
+
+        </div>
+
+        <div class="col flex-grow-3 summary-sections-elements">
+
+          <div class="summary-value">
+            {{$ctrl.meetingLocation.value !== null ? $ctrl.meetingLocation.value : 'No meeting location provided'}}
+          </div>
+          <div class="summary-label">
+            Meeting Location
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SESSION INFO NOTES -->
+      <div class="summary-sections-row flex-grid" ng-if="$ctrl.sessionInfoNote.inPdf">
+
+        <div class="col summary-sections-elements">
+          <div class="summary-label">
+            Notes
+          </div>
+          
+          <div  class="summary-value notes"
+                ng-bind-html="$ctrl.sessionInfoNote.value"
+                style="color: #D5D5D5" 
+                >
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SESSION SUMMARY -> ATTENDEES -->
+    <header class="report-subheader">Attendees</header>
+    <!-- PROJECT MEMBERS CONTAINER -->
+    <div ng-if="$ctrl.sessionProjectMembers.inPdf" class="report-table attendees-table avoid-page-break">
+      <div class="report-table-heading">Bombardier</div>
+      <!-- PROJECT MEMBER -->
+      <div  class="flex-grid" 
+            style="text-transform:uppercase"
+            ng-repeat="projMember in $ctrl.sessionProjectMembers.value">
+              
+              <div class="col">{{projMember.customerAttendeeName}}</div>
+              <div class="col">{{projMember.title}}</div>
+      </div>
+
+    </div>
+    <!-- CLIENT MEMBERS CONTAINER -->
+    <div ng-if="$ctrl.sessionClientMembers.inPdf" class="report-table attendees-table">
+      <div class="report-table-heading">Client</div>
+
+      <div  style="text-transform:uppercase" class="flex-grid"
+            ng-repeat="clientMember in $ctrl.sessionClientMembers.value">
+        <div class="col">{{clientMember.customerAttendeeName}}</div>
+        <div class="col">{{clientMember.title}}</div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <!-- page break on print  -->
+  <div ng-if="$ctrl.sessionSummaryForcePageBreak.inPdf" class="page-break"></div>
+
+  <!-- DETAIL SUMMARY -HIDDEN -->
+  <div ng-hide="true" class="detail-summary new-page-padding">
+    <header id="section-detail-summary" class="report-header">Detail summary</header>
+
+    <!-- DETAIL -> FLOORPLAN - HIDDEN -->
+    <header ng-hide="true" class="report-subheader">Floorplan</header>
+
+    <div class="img-container" style="margin-bottom: 25px; width: 100%;">
+      <!-- <img src="http://lorempixel.com/g/800/100/"> -->
+    </div>
+
+
+    <div class="summary-sections-row flex-grid">
+      <div class="col summary-sections-elements mb-1">
+
+        <div class="summary-label discussion bold">
+          Discussion
+        </div>
+        <div class="summary-value notes">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sollicitudin ipsum vel metus condimentum, at sagittis dolor
+          condimentum. Etiam a lectus consequat, porttitor ex in, aliquam ante. Mauris fringilla urna non sem interdum hendrerit.
+          Quisque efficitur leo id mi malesuada, a hendrerit mi sollicitudin. Interdum et malesuada fames ac ante ipsum primis
+          in faucibus. Duis tincidunt velit tempor enim semper, eget lacinia tellus tempus. Ut ante sapien, ultrices ornare
+          ultrices nec, malesuada non dolor. Nulla ut dui ex. Nam magna enim, suscipit at sodales in, pharetra eget lacus.
+          Proin dapibus eros nulla, a sagittis libero commodo a. Nunc quis mi massa. Proin eu feugiat sem. Praesent placerat,
+          lacus sit amet condimentum rutrum, nunc lorem imperdiet ligula, sit amet ultrices erat lorem nec dui. Donec ultricies
+          maximus nisl, at vehicula dui mattis ac. Vivamus imperdiet risus in nisi scelerisque, posuere molestie mi venenatis.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- DETAIL -> FLOORPLAN -> OPTIONS -->
+    <div class="report-table">
+      <div class="report-table-heading">Options</div>
+
+      <div class="flex-grid">
+        <div class="col">2500-3006</div>
+        <div class="col flex-grow-6">
+          <div>3W - RH Divan &amp; LH Fwd Facing Angled Entertainment Cabinet</div>
+          <div class="flex-grid highlighted">
+            <div class="col highlighted-label">Notes</div>
+            <div class="col flex-grow-9">
+              <div>Both Divan End Cabinets will be reccessed at RBL19 due the BL of the Mid Bulkheads.</div>
+              <div>The Fwd End C abinet will be low to suit the OWEE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-grid">
+        <div class="col">2500-3023n</div>
+        <div class="col flex-grow-6">3W - Stateroom - RH Credenza, Wardrobe &amp; LH Single Bed</div>
+      </div>
+
+      <div class="flex-grid">
+        <div class="col">3820-0001</div>
+        <div class="col flex-grow-6">Shower option Aft Lavatory  RH Vanity, Toilet Enclosure, Centered Shower &amp; LH Small Wardrobe
+        </div>
+      </div>
+
+      <div class="flex-grid">
+        <div class="col">2500-3006</div>
+        <div class="col flex-grow-6">
+          <div>3W - RH Divan &amp; LH Fwd Facing Angled Entertainment Cabinet</div>
+          <div class="flex-grid highlighted">
+            <div class="col highlighted-label">Notes</div>
+            <div class="col flex-grow-9">
+              <div>Both Divan End Cabinets will be reccessed at RBL19 due the BL of the Mid Bulkheads.</div>
+              <div>The Fwd End C abinet will be low to suit the OWEE</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DETAIL -> FLOORPLAN -> ACTIONS -->
+    <div class="report-table">
+      <div class="report-table-heading">Actions</div>
+
+
+
+      <div class="flex-grid title-row">
+        <div class="col flex-grow-6">Description</div>
+        <div class="col center-text">Owner</div>
+        <div class="col center-text">Ecd</div>
+        <div class="col center-text">Closed</div>
+      </div>
+
+      <div class="flex-grid dotted-underline">
+        <div class="col flex-grow-6 actions-table-desc">Lorem ipsum dolor sit amet</div>
+        <div class="col actions-table-owner center-text">Julie</div>
+        <div class="col actions-table-ecd center-text">2017-07-15</div>
+        <div class="col actions-table-closed center-text">icon</div>
+      </div>
+
+      <div class="flex-grid dotted-underline">
+        <div class="col flex-grow-6 actions-table-desc">Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem. Consectetur adipiscing elit in gravida magna sem</div>
+        <div class="col actions-table-owner center-text">Vincent</div>
+        <div class="col actions-table-ecd center-text">2017-08-12</div>
+        <div class="col actions-table-closed center-text">icon</div>
+      </div>
+
+      <div class="flex-grid dotted-underline">
+        <div class="col flex-grow-6 actions-table-desc">Lorem ipsum dolor sit amet</div>
+        <div class="col actions-table-owner center-text">Julie</div>
+        <div class="col actions-table-ecd center-text">2017-07-15</div>
+        <div class="col actions-table-closed center-text"></div>
+      </div>
+
+
+    </div>
+    <!-- end detail -> floorplan -> actions -->
+
+    <!-- DETAIL -> AVIONICS -->
+
+    <div class="details-avionics-section">
+      <header class="report-subheader">Avionics</header>
+
+      <div class="report-table">
+
+        <div class="report-table-heading">Options</div>
+
+        <div class="flex-grid">
+          <div class="col">125686</div>
+          <div class="col flex-grow-6">Sed nibh arcu, posuere in nunc id.</div>
+        </div>
+
+        <div class="flex-grid">
+          <div class="col">125686</div>
+          <div class="col flex-grow-6">Lorem ipsum dolor sit amet consectetur adipiscing elit. In gravida magna sem.</div>
+        </div>
+
+        <div class="flex-grid">
+          <div class="col">125686</div>
+          <div class="col flex-grow-6">Sed nibh arcu, posuere in nunc id, tincidunt dignissim.</div>
+        </div>
+
+        <div class="flex-grid">
+          <div class="col">125686</div>
+          <div class="col flex-grow-6">Vestibulum nulla diam, faucibus non lorem vel, dignissim mattis nulla</div>
+        </div>
+
+        <div class="flex-grid">
+          <div class="col">125686</div>
+          <div class="col flex-grow-6">Sed nibh arcu, posuere in nunc id.</div>
+        </div>
+
+        <div class="flex-grid">
+          <div class="col">125686</div>
+          <div class="col flex-grow-6">
+            <div>Lorem ipsum dolor sit amet consectetur adipiscing elit.</div>
+
+            <div class="flex-grid-group avionics">
+              <div class="flex-grid highlighted avionics">
+                <div class="col highlighted-label">P&amp;O</div>
+                <div class="col flex-grow-9">
+                  <div>123456</div>
+                </div>
+              </div>
+              <div class="flex-grid highlighted avionics">
+                <div class="col highlighted-label">Notes</div>
+                <div class="col flex-grow-9">
+                  <div>LBL 7.00 - RLB 17.00 door opening.</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="flex-grid">
+          <div class="col">125686</div>
+          <div class="col flex-grow-6">Sed nibh arcu, posuere in nunc id.</div>
+        </div>
+
+        <div class="flex-grid">
+          <div class="col">125686</div>
+          <div class="col flex-grow-6">Sed nibh arcu, posuere in nunc id.</div>
+        </div>
+
+      </div>
+      <!-- end avionics -> report table -->
+
+    </div>
+    <!-- end avionics-section -->
+
+    <!-- page break on print  -->
+    <div class="page-break"></div>
+
+    <!-- DETAIL -> EXTERIOR -->
+
+    <div class="details-exterior-section new-page-padding">
+      <header class="report-subheader">Exterior</header>
+
+      <!-- discussion -->
+      <div class="summary-sections-row flex-grid">
+        <div class="col summary-sections-elements mb-1">
+
+          <div class="summary-label discussion bold">
+            Discussion
+          </div>
+          <div class="summary-value notes">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida magna sem, quis ornare leo tempus vel. Nulla facilisi.
+            Nunc ut tristique lectus. Ut sed mi ex. Sed nibh arcu, posuere in nunc id, tincidunt dignissim ante. Vestibulum
+            nulla diam, faucibus non lorem vel, dignissim mattis nulla. Proin ut neque enim.
+          </div>
+          <div class="summary-value notes">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida magna sem, quis ornare leo tempus vel. Nulla facilisi.
+            Nunc ut tristique lectus. Ut sed mi ex. Sed nibh arcu, posuere in nunc id, tincidunt dignissim ante. Vestibulum
+            nulla diam, faucibus non lorem vel, dignissim mattis nulla. Proin ut neque enim.
+            <ul>
+              <li class="points-note">Lorem ipsum dolor sit amet consectetur adipiscing elit</li>
+              <li class="points-note">In gravida magna sem, quis ornare leo tempus vel</li>
+              <li class="points-note">Vestibulum nulla diam, faucibus non lorem vel, dignissim mattis nulla. Proin ut neque enim. Faucibus non lorem
+                vel, dignissim mattis nulla. Proin ut neque enim.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- actions table -->
+      <div class="report-table">
+        <div class="report-table-heading">Actions</div>
+
+
+
+        <div class="flex-grid title-row">
+          <div class="col flex-grow-6">Description</div>
+          <div class="col center-text">Owner</div>
+          <div class="col center-text">Ecd</div>
+          <div class="col center-text">Closed</div>
+        </div>
+
+        <div class="flex-grid dotted-underline">
+          <div class="col flex-grow-6 actions-table-desc">Lorem ipsum dolor sit amet</div>
+          <div class="col actions-table-owner center-text">Julie</div>
+          <div class="col actions-table-ecd center-text">2017-07-15</div>
+          <div class="col actions-table-closed center-text">icon</div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- end details-exterior-section  -->
+
+    <!-- DETAIL -> SEATS -->
+    <div class="details-seats-section">
+      <header class="report-subheader">Seats</header>
+
+      <!-- discussion -->
+      <div class="summary-sections-row flex-grid">
+        <div class="col summary-sections-elements mb-1">
+
+          <div class="summary-label discussion bold">
+            Discussion
+          </div>
+          <div class="summary-value notes">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In gravida magna sem, quis ornare leo tempus vel. Nulla facilisi.
+            Nunc ut tristique lectus. Ut sed mi ex. Sed nibh arcu, posuere in nunc id, tincidunt dignissim ante. Vestibulum
+            nulla diam, faucibus non lorem vel, dignissim mattis nulla. Proin ut neque enim. Sed nibh arcu, posuere in nunc
+            id, tincidunt dignissim ante. Vestibulum nulla diam, faucibus non lorem vel, dignissim mattis nulla. Proin ut
+            neque enim.
+          </div>
+
+        </div>
+
+      </div>
+      <!-- end discussion -->
+
+      <!-- options -->
+      <div class="report-table">
+        <div class="report-table-heading">Options</div>
+
+        <div class="flex-grid">
+          <div class="col">2500 &#x2010; 3011</div>
+          <div class="col flex-grow-6">
+            <div>3W &#x2010; 6 places Angled Conference Grouping (Ying Yang)</div>
+            <div>This requires a Green AC Floorbeam Kit / SB for the RH Double Seat</div>
+          </div>
+        </div>
+
+        <div class="flex-grid">
+          <div class="col">2500-3023n</div>
+          <div class="col flex-grow-6">3W - Stateroom - RH Credenza, Wardrobe &amp; LH Single Bed</div>
+        </div>
+
+        <div class="flex-grid">
+          <div class="col">3820-0001</div>
+          <div class="col flex-grow-6">Shower option Aft Lavatory - RH Vanity, Toilet Enclosure, Centered Shower &amp; LH Small Wardrobe
+          </div>
+        </div>
+
+        <div class="flex-grid">
+          <div class="col">2500-3006</div>
+          <div class="col flex-grow-6">
+            <div>3W - RH Divan &amp; LH Fwd Facing Angled Entertainment Cabinet</div>
+            <div class="flex-grid highlighted">
+              <div class="col highlighted-label">Notes</div>
+              <div class="col flex-grow-9">
+                <div>Both Divan End Cabinets will be reccessed at RBL19 due the BL of the Mid Bulkheads.</div>
+                <div>The Fwd End C abinet will be low to suit the OWEE</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="flex-grid">
+          <div class="col">2500-3023</div>
+          <div class="col flex-grow-6">3W - Stateroom - RH Credenza, Wardrobe &amp; LH Single Bed</div>
+        </div>
+      </div>
+      <!-- end options -->
+    </div>
+    <!-- end details-seats-section -->
+
+  </div>
+  <!-- end detail summary -->
+
+  <!-- page break on print  -->
+  <div class="page-break"></div>
+
+  <!-- MATERIAL SUMMARY -->
+  <div ng-hide="true" class="material-summary new-page-padding">
+    <header id="section-material-summary" class="report-header">Material summary</header>
+
+    <!-- discussion -->
+    <div class="summary-sections-row flex-grid">
+      <div class="col summary-sections-elements mb-1">
+
+        <div class="summary-label discussion bold">
+          Discussion
+        </div>
+        <div class="summary-value notes">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sollicitudin ipsum vel metus condimentum, at sagittis dolor
+          condimentum. Etiam a lectus consequat, porttitor ex in, aliquam ante. Mauris fringilla urna non sem interdum hendrerit.
+          Quisque efficitur leo id mi malesuada, a hendrerit mi sollicitudin.
+        </div>
+      </div>
+
+    </div>
+    <!-- end discussion -->
+
+    <!-- actions table -->
+    <div class="report-table">
+      <div class="report-table-heading">Actions</div>
+
+
+
+      <div class="flex-grid title-row">
+        <div class="col flex-grow-6">Description</div>
+        <div class="col center-text">Owner</div>
+        <div class="col center-text">Ecd</div>
+        <div class="col center-text">Closed</div>
+      </div>
+
+      <div class="flex-grid dotted-underline">
+        <div class="col flex-grow-6 actions-table-desc">Lorem ipsum dolor sit amet</div>
+        <div class="col actions-table-owner center-text">Julie</div>
+        <div class="col actions-table-ecd center-text">2017-07-15</div>
+        <div class="col actions-table-closed center-text">icon</div>
+      </div>
+
+      <div class="flex-grid dotted-underline">
+        <div class="col flex-grow-6 actions-table-desc">
+          <div>Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem</div>
+          <div>Consectetur adipiscing elit in gravida magna sem</div>
+        </div>
+        <div class="col actions-table-owner center-text">Vincent</div>
+        <div class="col actions-table-ecd center-text">2017-08-12</div>
+        <div class="col actions-table-closed center-text">icon</div>
+      </div>
+
+    </div>
+    <!-- end actions table -->
+
+    <!-- MATERIAL -> CARPET -->
+    <div class="details-carpet-section">
+      <header class="report-subheader">Carpet</header>
+
+      <div class="summary">
+
+        <div class="summary-sections-row flex-grid 
+                    flex-wrap flex-wrap-3-per-row pl-2">
+          <div class="summary-sections-elements gutter">
+
+            <div class="summary-value summary-value-sm">
+              Scott Group
+            </div>
+            <div class="summary-label">
+              Supplier
+            </div>
+
+          </div>
+
+          <div class="summary-sections-elements gutter">
+
+            <div class="summary-value summary-value-sm">
+              Manistee w/Silk
+            </div>
+            <div class="summary-label">
+              Type
+            </div>
+
+          </div>
+
+          <div class="summary-sections-elements gutter">
+
+            <div class="summary-value summary-value-sm">
+              W67529
+            </div>
+            <div class="summary-label">
+              COLOR
+            </div>
+
+          </div>
+
+        </div>
+        <!-- end summary-sections-row -->
+
+        <!-- applications -->
+        <div class="flex-grid pl-2">
+          <div class="col bold uppercase">Applications</div>
+          <div class="col flex-grow-6">Lorem ipsum dolor sit amet, Consectetur adipiscing elit, Sed nibh arcu, Posuere in nunc id, Tincidunt.
+          </div>
+        </div>
+        <!-- end applications -->
+      </div>
+      <!-- end grid summary -->
+
+
+
+    </div>
+    <!-- end material -> carpet -->
+
+    <!-- MATERIAL -> FABRIC -->
+    <div class="details-fabric-section">
+      <header class="report-subheader">Fabric</header>
+
+      <div class="summary">
+
+        <div class="summary-sections-row 
+                flex-grid flex-wrap 
+                flex-wrap-3-per-row pl-2">
+          <div class="summary-sections-elements gutter">
+
+            <div class="summary-value summary-value-sm">
+              Tapis Corporation
+            </div>
+            <div class="summary-label">
+              Supplier
+            </div>
+
+          </div>
+
+          <div class="summary-sections-elements gutter">
+
+            <div class="summary-value summary-value-sm">
+              Geneve
+            </div>
+            <div class="summary-label">
+              Type
+            </div>
+
+          </div>
+
+          <div class="summary-sections-elements gutter">
+
+            <div class="summary-value summary-value-sm">
+              GVFR3413 Shade
+            </div>
+            <div class="summary-label">
+              COLOR
+            </div>
+
+          </div>
+
+          <div class="summary-sections-elements gutter">
+
+            <div class="summary-value summary-value-sm">
+              GVFR3413 Shade
+            </div>
+            <div class="summary-label">
+              COLOR
+            </div>
+
+          </div>
+
+          <div class="summary-sections-elements gutter">
+
+            <div class="summary-value summary-value-sm">
+              GVFR3413 Shade
+            </div>
+            <div class="summary-label">
+              COLOR
+            </div>
+
+          </div>
+
+        </div>
+        <!-- end section-row -->
+
+        <!-- applications -->
+        <div class="flex-grid pl-2 mb-2">
+          <div class="col bold uppercase">Applications</div>
+          <div class="col flex-grow-6">Lorem ipsum dolor sit amet, Consectetur adipiscing elit, Sed nibh arcu, Posuere in nunc id, Tincidunt.
+          </div>
+        </div>
+        <!-- end applications -->
+
+        <div class="summary-sections-row 
+          flex-grid flex-wrap 
+          flex-wrap-3-per-row pl-2">
+          <div class="summary-sections-elements">
+
+            <div class="summary-value summary-value-sm gutter">
+              Crescendo / Aldeco
+            </div>
+            <div class="summary-label gutter">
+              SUPPLIER
+            </div>
+
+          </div>
+
+          <div class="summary-sections-elements">
+
+            <div class="summary-value summary-value-sm gutter">
+              Fabric
+            </div>
+            <div class="summary-label gutter">
+              Type
+            </div>
+
+          </div>
+
+          <div class="summary-sections-elements">
+
+            <div class="summary-value summary-value-sm gutter">
+              Infante 2
+            </div>
+            <div class="summary-label gutter">
+              COLOR
+            </div>
+
+          </div>
+
+          <div class="summary-sections-elements">
+
+            <div class="summary-value summary-value-sm gutter">
+              67% CO, 33% VI
+            </div>
+            <div class="summary-label gutter">
+              COLOR
+            </div>
+
+          </div>
+
+          <div class="summary-sections-elements">
+
+            <div class="summary-value summary-value-sm gutter">
+              N / A
+            </div>
+            <div class="summary-label gutter">
+              TYPE
+            </div>
+
+          </div>
+
+          <div class="summary-sections-elements">
+
+            <div class="summary-value summary-value-sm gutter">
+              CANSEW CBB209 S2562
+            </div>
+            <div class="summary-label gutter">
+              Color
+            </div>
+
+          </div>
+
+          <div class="summary-sections-elements">
+
+            <div class="summary-value summary-value-sm gutter">
+              54'
+            </div>
+            <div class="summary-label gutter">
+              Content
+            </div>
+
+          </div>
+
+        </div>
+        <!-- end section-row -->
+      </div>
+      <!-- end grid summary -->
+    </div>
+    <!-- end material -> Fabric -->
+
+    <!-- MATERIAL -> PILLOW ABRIC -->
+    <div class="details-pillow-fabric-section">
+      <header class="report-subheader">Pillow Fabric</header>
+
+      <div class="summary">
+
+        <div class="summary-sections-row 
+                flex-grid flex-wrap 
+                flex-wrap-3-per-row pl-2">
+          <div class="summary-sections-elements">
+
+            <div class="summary-value summary-value-sm gutter">
+              Tapis Corporation
+            </div>
+            <div class="summary-label gutter">
+              Supplier
+            </div>
+
+          </div>
+
+          <div class="summary-sections-elements">
+
+            <div class="summary-value summary-value-sm gutter">
+              Geneve
+            </div>
+            <div class="summary-label gutter">
+              Type
+            </div>
+
+          </div>
+
+          <div class="summary-sections-elements">
+
+            <div class="summary-value summary-value-sm gutter">
+              GVFR3413 Shade
+            </div>
+            <div class="summary-label gutter">
+              COLOR
+            </div>
+
+          </div>
+
+          <div class="summary-sections-elements">
+
+            <div class="summary-value summary-value-sm gutter">
+              GVFR3413 Shade
+            </div>
+            <div class="summary-label gutter">
+              COLOR
+            </div>
+
+          </div>
+
+
+        </div>
+        <!-- end section-row -->
+
+        <!-- applications -->
+        <div class="flex-grid pl-2 mb-2-screen">
+          <div class="col bold uppercase">Applications</div>
+          <div class="col flex-grow-6">Lorem ipsum dolor sit amet, Consectetur adipiscing elit, Sed nibh arcu, Posuere in nunc id, Tincidunt.
+          </div>
+        </div>
+        <!-- end applications -->
+      </div>
+      <!-- end grid summary -->
+    </div>
+    <!-- end material -> Pillow Fabric -->
+
+  </div>
+  <!-- end material-summary -->
+
+  <!-- page break on print  -->
+  <div class="page-break"></div>
+
+  <!-- P AND O -->
+  <div ng-hide="true" class="PnO-summary new-page-padding">
+    <header id="section-po-summary" class="report-header">P &amp; O</header>
+
+    <!-- P and O -> PnO table -->
+    <div class="PnO-table">
+      <div class="flex-grid mb-2">
+        <div class="col">1006-001</div>
+        <div class="col flex-grow-9">
+
+          <div class="grouped-PnO">
+            <div class="bold dotted-underline-strong uppercase">Bulkhead Monitor</div>
+            <div class="">24" Bulkhead Monitor to be installed on the fwd face of the 1st mid bulkhead on the LHS (behind the conference
+              group seats)
+            </div>
+          </div>
+
+          <div class="grouped-PnO">
+            <div class="bold uppercase">Associated Option</div>
+            <div class="flex-grid dotted-underline">
+              <div class="col">2500-3023</div>
+              <div class="col flex-grow-9">2W - Stateroom - RH Credenza</div>
+            </div>
+            <div class="flex-grid">
+              <div class="col">2500-3023</div>
+              <div class="col flex-grow-9">3W - Stateroom - RH Credenza, Wardrobe &mp; LH Single Bede &mp; LH Single Bed</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="flex-grid mb-2">
+        <div class="col">1006-001</div>
+        <div class="col flex-grow-9">
+
+          <div class="grouped-PnO">
+            <div class="bold dotted-underline-strong uppercase">Bulkhead Monitor</div>
+            <div class="">24" Bulkhead Monitor to be installed on the fwd face of the 1st mid bulkhead on the LHS (behind the conference
+              group seats)
+            </div>
+          </div>
+
+          <div class="grouped-PnO">
+            <div class="bold uppercase">Associated Option</div>
+            <div class="flex-grid dotted-underline">
+              <div class="col">2500-3023</div>
+              <div class="col flex-grow-9">2W - Stateroom - RH Credenza</div>
+            </div>
+            <div class="flex-grid">
+              <div class="col">2500-3023</div>
+              <div class="col flex-grow-9">3W - Stateroom - RH Credenza, Wardrobe &mp; LH Single Bede &mp; LH Single Bed</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="flex-grid mb-2">
+        <div class="col">1006-001</div>
+        <div class="col flex-grow-9">
+
+          <div class="grouped-PnO">
+            <div class="bold dotted-underline-strong uppercase">Bulkhead Monitor</div>
+            <div class="">24" Bulkhead Monitor to be installed on the fwd face of the 1st mid bulkhead on the LHS (behind the conference
+              group seats)
+            </div>
+          </div>
+
+          <div class="grouped-PnO">
+            <div class="bold uppercase">Associated Option</div>
+            <div class="flex-grid dotted-underline">
+              <div class="col">2500-3023</div>
+              <div class="col flex-grow-9">2W - Stateroom - RH Credenza</div>
+            </div>
+            <div class="flex-grid">
+              <div class="col">2500-3023</div>
+              <div class="col flex-grow-9">3W - Stateroom - RH Credenza, Wardrobe &mp; LH Single Bede &mp; LH Single Bed</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- end P and O table -->
+
+  </div>
+  <!-- end P and O summary-->
+
+  <!-- page break on print  -->
+  <div class="page-break"></div>
+
+  <!-- ADDITIONAL NOTES SECTION -->
+  <div ng-hide="true" class="additional-notes-summary new-page-padding page-break-after">
+    <header id="section-additional-notes" class="report-header">Additional notes</header>
+
+    <!-- Additional Notes -> table -->
+    <div class="PnO-table">
+      <div class="flex-grid mb-2">
+        <div class="col">1006-001</div>
+        <div class="col flex-grow-9">
+
+          <div class="grouped-addtional-notes">
+            <div class="dotted-underline-strong">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum rhoncus dui id aliquam. Phasellus porta
+              neque vulputate aliquet maximus. Donec vulputate ultrices odio sed ornare.elementum nulla massa, at sagittis
+              ex ultricies sit amet.
+            </div>
+          </div>
+
+          <div class="grouped-addtional-notes">
+            <div class="dotted-underline-strong">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum rhoncus dui id aliquam. Phasellus porta
+              neque vulputate aliquet maximus. Donec vulputate ultrices odio sed ornare.elementum nulla massa, at sagittis
+              ex ultricies sit amet.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="flex-grid mb-2">
+        <div class="col">1006-001</div>
+        <div class="col flex-grow-9">
+
+          <div class="grouped-addtional-notes">
+            <div class="dotted-underline-strong">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum rhoncus dui id aliquam. Phasellus porta
+              neque vulputate aliquet maximus. Donec vulputate ultrices odio sed ornare.elementum nulla massa, at sagittis
+              ex ultricies sit amet.
+            </div>
+          </div>
+
+          <div class="grouped-addtional-notes">
+            <div class="dotted-underline-strong">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum rhoncus dui id aliquam. Phasellus porta
+              neque vulputate aliquet maximus. Donec vulputate ultrices odio sed ornare.elementum nulla massa, at sagittis
+              ex ultricies sit amet.
+            </div>
+          </div>
+
+        </div>
+        
+      </div>
+
+      <div class="flex-grid mb-2">
+        <div class="col">1006-001</div>
+        <div class="col flex-grow-9">
+
+          <div class="grouped-addtional-notes">
+            <div class="dotted-underline-strong">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum rhoncus dui id aliquam. Phasellus porta
+              neque vulputate aliquet maximus. Donec vulputate ultrices odio sed ornare.elementum nulla massa, at sagittis
+              ex ultricies sit amet.
+            </div>
+          </div>
+
+          <div class="grouped-addtional-notes">
+            <div class="dotted-underline-strong">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam elementum rhoncus dui id aliquam. Phasellus porta
+              neque vulputate aliquet maximus. Donec vulputate ultrices odio sed ornare.elementum nulla massa, at sagittis
+              ex ultricies sit amet.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- end Additional notes -> table -->
+  </div>
+  <!-- end additional notes section -->
+
+  <!-- SIGNATURE APPROVAL PAGE -->
+  <div id="section-signature-approval" class="signature-approval-summary">
+    <header class="report-header">Signature Approval</header>
+    <div class="summary">
+      <div ng-if="$ctrl.signApprovalDisclaimerText.inPdf" 
+            ng-bind-html="$ctrl.signApprovalDisclaimerText.value" class="sign-approval-disclaimer-text-wrapper">
+        Disclaimer: This is for testing only
+      </div>
+      <div class="summary-sections-row flex-grid">
+        <div class="col summary-sections-elements gutter">
+          <div class="pb10 summary-value summary-value-no-left-padding 
+                      sign-approval sign-approval-bg 
+                      sign-approval-value">
+            PROJECT - PA 
+          </div>
+          <div class="summary-label bg-white summary-label-no-left-padding mt10">
+            <!-- Purchase Agreement Number -->
+            Project Number | Purchase Agreement 
+          </div>
+        
+        </div>
+        <div class="col summary-sections-elements gutter">
+          <div class="pb10 summary-value sign-approval sign-approval-bg sign-approval-value">
+            <span class="hidden-text">empty</span>
+          </div>
+          <div class="summary-label bg-white summary-label-no-left-padding mt10">
+            <!-- Purchase Agreement Number -->
+            Customer Signature
+          </div>
+        
+        </div>
+        <div class="col summary-sections-elements gutter">
+          <div class="pb10 summary-value sign-approval sign-approval-bg sign-approval-value">
+            <span class="hidden-text">empty</span>
+          </div>
+          <div class="summary-label bg-white summary-label-no-left-padding mt10">
+            <!-- Purchase Agreement Number -->
+            Date
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end main body content (non header footer)-->
+
+</div>
+<!-- END CONTAINER -->
+<script src="" async defer></script>
+</body>
+</html>
